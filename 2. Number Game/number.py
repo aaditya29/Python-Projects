@@ -22,9 +22,14 @@ while True:
     else:
         print("Please type a number next time.")
         continue
-    
+
     if user_guess == random_number:
         print("Your answer is correct!!")
         break
-    elif user_guess>random_number:
-        
+    elif user_guess > random_number:
+        print("Your guess was in upper range than desired result.")
+    else:
+        print("Your guess was in lower range than desired result.")
+
+
+print("You got the correct answer in ", guesses, "guesses")
