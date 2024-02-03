@@ -22,3 +22,9 @@ while True:
     else:
         print("Please type a number next time.")
         continue
+    
+    if user_guess == random_number:
+        print("Your answer is correct!!")
+        break
+    elif user_guess>random_number:
+        
