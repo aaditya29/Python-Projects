@@ -12,3 +12,13 @@ if highest_range.isdigit():
 
 random_number = random.randint(0, highest_range)
 guesses = 0
+
+while True:
+    guesses += 1
+
+    user_guess = input("Make a guess(>0)")
+    if user_guess.isdigit():
+        user_guess = int(user_guess)
+    else:
+        print("Please type a number next time.")
+        continue
