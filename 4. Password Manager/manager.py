@@ -6,7 +6,10 @@ def view():
 
 
 def add():
-    pass
+    name = input('UserName: ')
+    password = input('Password: ')
+    with open('passwords.txt', 'a') as f:
+        f.write(name + "=>" + password + "\n")
 
 
 while True:
@@ -16,9 +19,9 @@ while True:
         break
 
     if mode == "view":
-        view
+        view()
     if mode == "add":
-        add
+        add()
     else:
         print("Your choice is invalid.")
         continue
