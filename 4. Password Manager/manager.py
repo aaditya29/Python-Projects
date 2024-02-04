@@ -1,5 +1,14 @@
 password = input("What is your master password?")
 
+
+def view():
+    pass
+
+
+def add():
+    pass
+
+
 while True:
     mode = input(
         "Would you like to enter a new password or view your previous passwords?(PRESS Q TO QUIT!) ")
@@ -7,9 +16,9 @@ while True:
         break
 
     if mode == "view":
-        pass
+        view
     if mode == "add":
-        pass
+        add
     else:
         print("Your choice is invalid.")
         continue
