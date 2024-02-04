@@ -6,14 +6,15 @@ computer_wins = 0
 game = ["rock", "paper", "scissors"]
 
 while True:
-    user_choice = input("Enter ROCK, PAPER, SCISSORS OR 0 To Quit: ").lower()
-    if user_choice == "0":
+    user_choice = input(
+        "Enter ROCK OR PAPER OR SCISSORS OR Q To Quit: ").lower()
+    if user_choice == "Q":
         break
 
     if user_choice not in game:
         continue
 
-    option = random.randint(0, 1, 2)
+    option = random.randint(0, 2)
 
     # rock:0, paper:1, scissors:2
     computer_choice = game[option]
@@ -38,3 +39,7 @@ while True:
     else:
         print("YOU LOST!")
         computer_wins += 1
+
+print("User won ", user_wins, "times.")
+print("Computer won ", computer_wins, "times.")
+print("GAME OVER!!")
