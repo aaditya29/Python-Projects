@@ -21,3 +21,20 @@ while True:
 
     if user_choice == "rock" and computer_choice == "scissors":
         print("YOU WON!")
+        user_wins += 1
+
+    elif user_choice == "paper" and computer_choice == "rock":
+        print("YOU WON!")
+        user_wins += 1
+
+    elif user_choice == "paper" and computer_choice == "rock":
+        print("YOU WON!")
+        user_wins += 1
+
+    elif user_choice == "scissors" and computer_choice == "paper":
+        print("YOU WON!")
+        user_wins += 1
+
+    else:
+        print("YOU LOST!")
+        computer_wins += 1
