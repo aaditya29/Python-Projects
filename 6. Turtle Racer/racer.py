@@ -1,3 +1,13 @@
+import tkinter as tk
+import turtle
+
+WIDTH, HEIGHT = 500, 500
+COLORS = ['red', 'yellow', 'blue', 'green', 'black',
+          'purple', 'orange', 'pink', 'brown', 'golden']
+
+screen = turtle.screen
+screen.set_width(WIDTH, HEIGHT)
+screen.title('Turtle Racer')
 
 
 def racer_numbers():
