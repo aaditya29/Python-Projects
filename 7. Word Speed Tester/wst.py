@@ -1,10 +1,15 @@
 import curses  # curses library in Python provides a terminal-independent way to create text-based user interfaces
 from curses import wrapper
+import time
+import random
 
 
 def start_screen(stdscr):
     stdscr.clear()
-    stdscr.addstr(0, 0, 'Welcome to typing speed test!')
+    stdscr.addstr(0, 0, 'Welcome to typing speed test!\n')
+    stdscr.addstr("\nPress any key to BEGIN!")
+    stdscr.refresh()
+
     stdscr.refresh()
 
 
