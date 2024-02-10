@@ -3,10 +3,16 @@ from curses import wrapper
 
 
 def main(stdscr):
+    # stylising the texts on screen
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+    curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
+
     stdscr.clear()
-    stdscr.addstr('Welcome to typing speed test!')
+    stdscr.addstr(0, 0, 'Welcome to typing speed test!')
     stdscr.refresh()
-    stdscr.getkey()  # waits for user to type on screen
+    key = stdscr.getkey()  # waits for user to type on screen
+    print(key)  # printing the key user typed
 
 
 wrapper(main)
