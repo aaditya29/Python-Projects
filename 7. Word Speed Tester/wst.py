@@ -12,6 +12,15 @@ def start_screen(stdscr):
     stdscr.getkey()
 
 
+def wpm_test(stdscr):  # function to add text for test
+    target_text = "Type this line to test your typing skills!"
+    current_text = []  # what user has typed
+    stdscr.clear()
+    stdscr.addstr(target_text)
+    stdscr.refresh()
+    stdscr.getkey()
+
+
 def main(stdscr):
     # stylising the texts on screen
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
@@ -19,6 +28,7 @@ def main(stdscr):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
     start_screen(stdscr)
+    wpm_test(stdscr)
 
 
 wrapper(main)
