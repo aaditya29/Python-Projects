@@ -21,13 +21,6 @@ def wpm_test(stdscr):  # function to add text for test
     stdscr.getkey()
 
     while True:
-        key = stdscr.getkey()  # user typing
-
-        if ord(key) == 27:  # quit if user presses escape
-            break
-
-        # appending to current text whatever user typed
-        current_text.append(key)
         stdscr.clear()
         stdscr.addstr(target_text)
 
@@ -37,6 +30,20 @@ def wpm_test(stdscr):  # function to add text for test
             stdscr.addstr(char, curses.color_pair(1))
 
         stdscr.refresh()
+        key = stdscr.getkey()  # user typing
+
+        if ord(key) == 27:  # quit if user presses escape
+            break
+
+        # deleting texts if user presses backspace key
+        if key in ("KEY_BACKSPACE", "\b", "\x7f"):
+            if len(current_text) > 0:
+                current_text.pop()
+        else:
+            current_text.append(key)  # else add texts
+
+        # appending to current text whatever user typed
+        current_text.append(key)
 
 
 def main(stdscr):
