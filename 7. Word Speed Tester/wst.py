@@ -25,14 +25,16 @@ def display_text(stdscr, target, current, wpm=0):
             color = curses.color_pair(2)  # red if wrong text typed
         # writing whatever user typed in green color
         stdscr.addstr(0, i, char, color)
-        
+
 
 def load_text():
-    
+    with open("text.txt", "r") as f:
+        lines = f.readlines()
+        return random.choice(lines).strip()
 
 
 def wpm_test(stdscr):  # function to add text for test
-    target_text = "Type this line to test your typing skills!"
+    target_text = load_text
     current_text = []  # what user has typed
     wpm = 0
     start_time = time.time()
