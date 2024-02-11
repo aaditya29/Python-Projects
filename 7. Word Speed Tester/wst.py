@@ -10,6 +10,10 @@ def start_screen(stdscr):
     stdscr.addstr("\nPress any key to BEGIN!")
     stdscr.refresh()
     stdscr.getkey()
+    
+
+#overlaying texts
+def display_text(stdscr, target, current, wpm=0):
 
 
 def wpm_test(stdscr):  # function to add text for test
