@@ -19,8 +19,12 @@ def display_text(stdscr, target, current, wpm=0):
     # looping through every character user typed to store in list of current_text
     # enumerate will give elements from current_Text as well as index
     for i, char in enumerate(current):
+        correct_char = target[i]
+        color = curses.color_pair(1)  # green if typed correct text
+        if char != correct_char:
+            color = curses.color_pair(2)  # red if wrong text typed
         # writing whatever user typed in green color
-        stdscr.addstr(0, i, char, curses.color_pair(1))
+        stdscr.addstr(0, i, char, color)
 
 
 def wpm_test(stdscr):  # function to add text for test
