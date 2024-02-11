@@ -15,7 +15,7 @@ def start_screen(stdscr):
 # overlaying texts
 def display_text(stdscr, target, current, wpm=0):
     stdscr.addstr(target)
-
+    stdscr.addstr(1, 0, f"WPM: {wpm}")
     # looping through every character user typed to store in list of current_text
     # enumerate will give elements from current_Text as well as index
     for i, char in enumerate(current):
@@ -25,21 +25,34 @@ def display_text(stdscr, target, current, wpm=0):
             color = curses.color_pair(2)  # red if wrong text typed
         # writing whatever user typed in green color
         stdscr.addstr(0, i, char, color)
+        
+
+def load_text():
+    
 
 
 def wpm_test(stdscr):  # function to add text for test
     target_text = "Type this line to test your typing skills!"
     current_text = []  # what user has typed
-    stdscr.clear()
-    stdscr.addstr(target_text)
-    stdscr.refresh()
-    stdscr.getkey()
+    wpm = 0
+    start_time = time.time()
+    stdscr.nodelay(True)
 
     while True:
+        time_elapsed = max(time.time() - start_time, 1)
+        wpm = round((len(current_text) / (time_elapsed / 60)) / 5)
         stdscr.clear()
-        display_text(stdscr, target_text, current_text)
+        display_text(stdscr, target_text, current_text, wpm)
         stdscr.refresh()
-        key = stdscr.getkey()  # user typing
+
+        if "".join(current_text) == target_text:
+            stdscr.nodelay(False)
+            break
+
+        try:  # making sure program doesn't crashes if user types nothing
+            key = stdscr.getkey()  # user typing
+        except:
+            continue
 
         if ord(key) == 27:  # quit if user presses escape
             break
@@ -48,7 +61,7 @@ def wpm_test(stdscr):  # function to add text for test
         if key in ("KEY_BACKSPACE", "\b", "\x7f"):
             if len(current_text) > 0:
                 current_text.pop()
-        else:
+        elif len(current_text) < len(target_text):
             current_text.append(key)  # else add texts
 
         # appending to current text whatever user typed
@@ -62,7 +75,13 @@ def main(stdscr):
     curses.init_pair(3, curses.COLOR_WHITE, curses.COLOR_BLACK)
 
     start_screen(stdscr)
-    wpm_test(stdscr)
+    while True:
+        wpm_test(stdscr)
+        stdscr.addstr(
+            2, 0, "Your writing speed test is completed. Press any key to continue or ESC to exit!!!")
+        key = stdscr.getkey()
+        if ord(key) == 27:
+            break
 
 
 wrapper(main)
