@@ -10,10 +10,17 @@ def start_screen(stdscr):
     stdscr.addstr("\nPress any key to BEGIN!")
     stdscr.refresh()
     stdscr.getkey()
-    
 
-#overlaying texts
+
+# overlaying texts
 def display_text(stdscr, target, current, wpm=0):
+    stdscr.addstr(target)
+
+    # looping through every character user typed to store in list of current_text
+    # enumerate will give elements from current_Text as well as index
+    for i, char in enumerate(current):
+        # writing whatever user typed in green color
+        stdscr.addstr(0, i, char, curses.color_pair(1))
 
 
 def wpm_test(stdscr):  # function to add text for test
@@ -26,13 +33,7 @@ def wpm_test(stdscr):  # function to add text for test
 
     while True:
         stdscr.clear()
-        stdscr.addstr(target_text)
-
-        # looping through every character user typed to store in list of current_text
-        for char in current_text:
-            # writing whatever user typed in green color
-            stdscr.addstr(char, curses.color_pair(1))
-
+        display_text(stdscr, target_text, current_text)
         stdscr.refresh()
         key = stdscr.getkey()  # user typing
 
