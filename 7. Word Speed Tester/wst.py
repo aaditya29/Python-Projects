@@ -20,6 +20,24 @@ def wpm_test(stdscr):  # function to add text for test
     stdscr.refresh()
     stdscr.getkey()
 
+    while True:
+        key = stdscr.getkey()  # user typing
+
+        if ord(key) == 27:  # quit if user presses escape
+            break
+
+        # appending to current text whatever user typed
+        current_text.append(key)
+        stdscr.clear()
+        stdscr.addstr(target_text)
+
+        # looping through every character user typed to store in list of current_text
+        for char in current_text:
+            # writing whatever user typed in green color
+            stdscr.addstr(char, curses.color_pair(1))
+
+        stdscr.refresh()
+
 
 def main(stdscr):
     # stylising the texts on screen
