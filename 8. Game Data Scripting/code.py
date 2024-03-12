@@ -22,6 +22,11 @@ import shutil
 from subprocess import PIPE, run
 import sys
 
+
+def main(source, target):
+    pass
+
+
 # grabbing command line arguments
 if __name__ == '__main__':
     args = sys.argv
@@ -30,3 +35,4 @@ if __name__ == '__main__':
 
     # stripping name of our python files which we don't want
     source, target = args[1:]
+    main(source, target)
