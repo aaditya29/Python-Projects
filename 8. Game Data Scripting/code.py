@@ -21,3 +21,12 @@ import json
 import shutil
 from subprocess import PIPE, run
 import sys
+
+# grabbing command line arguments
+if __name__ == '__main__':
+    args = sys.argv
+    if len(args) != 3:
+        raise Exception("You must pass only source and target directory.")
+
+    # stripping name of our python files which we don't want
+    source, target = args[1:]
