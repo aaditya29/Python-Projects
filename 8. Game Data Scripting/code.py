@@ -82,6 +82,7 @@ def compile_game_code(path):
         break
 
     if code_file_name is None:
+
         return
 
     command = GAME_COMPILE_COMMAND + [code_file_name]
