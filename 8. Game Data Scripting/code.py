@@ -53,13 +53,21 @@ def create_dir(path):
         os.mkdir(path)
 
 
+def copy_and_overwrite(source, dest):
+    if os.path.exists(dest):
+        shutil.rmtree(dest)
+    shutil.copytree(source, dest)
+
+
 def main(source, target):
     cwd = os.getcwd()  # getting current working directory
     source_path = os.path.join(cwd, source)
     target_path = os.path.join(cwd, target)
 
     game_paths = find_all_game_paths(source_path)
-    print(game_paths)
+    new_game_dirs = get_name_from_paths(game_paths, "_game")
+
+    create_dir(target_path)
 
 
 # grabbing command line arguments
