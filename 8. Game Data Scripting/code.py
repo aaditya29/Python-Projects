@@ -69,6 +69,10 @@ def main(source, target):
 
     create_dir(target_path)
 
+    for src, dest in zip(game_paths, new_game_dirs):
+        dest_path = os.path.join(target_path, dest)
+        copy_and_overwrite(src, dest_path)
+
 
 # grabbing command line arguments
 if __name__ == '__main__':
