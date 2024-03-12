@@ -23,8 +23,17 @@ from subprocess import PIPE, run
 import sys
 
 
+GAME_DIR_PATTERN = "game"
+
+
+def find_all_game_paths(source):  # to fetch game path
+    game_paths = []
+
+
 def main(source, target):
-    pass
+    cwd = os.getcwd()  # getting current working directory
+    source_path = os.path.join(cwd, source)
+    target_path = os.path.join(cwd, target)
 
 
 # grabbing command line arguments
