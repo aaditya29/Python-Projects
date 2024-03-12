@@ -37,8 +37,11 @@ def find_all_game_paths(source):  # to fetch game path
         break
     return game_paths
 
+
 def create_dir(path):
-    
+    if not os.path.exists(path):
+        os.mkdir(path)
+
 
 def main(source, target):
     cwd = os.getcwd()  # getting current working directory
