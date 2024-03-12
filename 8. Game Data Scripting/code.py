@@ -59,6 +59,16 @@ def copy_and_overwrite(source, dest):
     shutil.copytree(source, dest)
 
 
+def make_json_metadata_file(path, game_dirs):
+    data = {
+        "gameNames": game_dirs,
+        "numberOfGames": len(game_dirs)
+    }
+
+    with open(path, "w") as f:
+        json.dump(data, f)
+
+
 def main(source, target):
     cwd = os.getcwd()  # getting current working directory
     source_path = os.path.join(cwd, source)
@@ -72,6 +82,9 @@ def main(source, target):
     for src, dest in zip(game_paths, new_game_dirs):
         dest_path = os.path.join(target_path, dest)
         copy_and_overwrite(src, dest_path)
+
+    json_path = os.path.join(target_path, "metadata.json")
+    make_json_metadata_file(json_path, new_game_dirs)
 
 
 # grabbing command line arguments
